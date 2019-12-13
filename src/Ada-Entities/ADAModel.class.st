@@ -4,7 +4,7 @@ An ADAModel is MooseModel with AdaEntities in it
 "
 Class {
 	#name : #ADAModel,
-	#superclass : #SYNModel,
+	#superclass : #MooseModel,
 	#instVars : [
 		'singletonAnonymousArray'
 	],
