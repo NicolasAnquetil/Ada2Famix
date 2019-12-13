@@ -13,7 +13,7 @@ Class {
 
 { #category : #meta }
 ADAModel class >> annotation [
-	<MSEClass: #Model super: #SYNModel>
+	<MSEClass: #Model super: #MooseModel>
 	<package: #ADA>
 
 ]
