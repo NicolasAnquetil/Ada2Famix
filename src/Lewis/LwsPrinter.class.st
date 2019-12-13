@@ -150,7 +150,7 @@ LwsPrinter >> currentTabulationTokens [
 ]
 
 { #category : #initialization }
-LwsPrinter >> defaultTokenClassifier. [
+LwsPrinter >> defaultTokenClassifier [
 	^ LwsTokenClassifier new
 ]
 
