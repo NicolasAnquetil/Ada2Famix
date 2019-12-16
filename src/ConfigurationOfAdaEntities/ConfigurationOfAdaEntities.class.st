@@ -137,13 +137,10 @@ ConfigurationOfAdaEntities >> baseline02: spec [
 		do: [ spec blessing: #baseline.
 			spec repository: 'github://NicolasAnquetil/Ada2Famix'.
 			spec
-				project: 'FAST'
-					with: [ spec
-								baseline: 'FAST'
-								with: [ spec
-									loads: #('default');
-									repository: 'github://moosetechnology/FAST:master/src' ].
- 					].
+				baseline: 'FAST'
+				with: [ spec
+					loads: #('default');
+					repository: 'github://moosetechnology/FAST:master/src' ].
 			spec
 				package: #'Ada-Entities'  with: [ spec requires: #('FAST') ] ;
 				package: #'Ada-tests' with: [ spec requires: #('Ada-Entities') ]
