@@ -142,6 +142,9 @@ ConfigurationOfAdaEntities >> baseline02: spec [
                 loads: #('default');
                 repository: 'github://moosetechnology/FAST:moose7/src' ].
 			spec
+				package: #'Lewis' ;
+				package: #'LewisHW'  with: [ spec requires: #('Lewis') ] ;
+				package: #'LewisMoose'  with: [ spec requires: #('LewisHW') ] ;
 				package: #'FAST-Core-Resolution'  with: [ spec requires: #('FAST') ] ;
 				package: #'Ada-Entities'  with: [ spec requires: #('FAST-Core-Resolution') ] ;
 				package: #'Ada-tests' with: [ spec requires: #('Ada-Entities' 'LewisMoose') ]
