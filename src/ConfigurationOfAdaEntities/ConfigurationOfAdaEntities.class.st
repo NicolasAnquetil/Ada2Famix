@@ -116,15 +116,13 @@ ConfigurationOfAdaEntities >> baseline01: spec [
 		do: [ spec blessing: #baseline.
 			spec repository: 'github://NicolasAnquetil/Ada2Famix'.
 			spec
-				project: 'FAST'
+				project: 'FASTCore'
 					with: [ spec
-								baseline: 'FAST'
-								with: [ spec
-									loads: #('default');
-									repository: 'github://moosetechnology/FAST:moose7/src' ].
- 					].
+						className: #ConfigurationOfFASTCore;
+						versionString: '0.5';
+						repository: 'http://smalltalkhub.com/mc/Moose/FASTCore/main/' ].
 			spec
-				package: #'Ada-Entities'  with: [ spec requires: #('FAST') ] ;
+				package: #'Ada-Entities'  with: [ spec requires: #('FASTCore') ] ;
 				package: #'Ada-tests' with: [ spec requires: #('Ada-Entities') ]
 		]
 ]
