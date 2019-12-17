@@ -7,7 +7,7 @@ Class {
 { #category : #setUp }
 LwsBugsTest >> resetMeta [
 
-	SYNModel resetMeta
+	ADAModel resetMeta
 ]
 
 { #category : #tests }

@@ -378,7 +378,7 @@ end SECOND_SEPARATE;
 
 { #category : #running }
 LwsAdaParserAbstractTests >> setUp [
-	model := THALESModel new
+	model := ADAModel new
 ]
 
 { #category : #samples }

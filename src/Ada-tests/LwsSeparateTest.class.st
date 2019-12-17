@@ -1,4 +1,9 @@
 "
+Tests to remove since they are specific to Thales code ?
+or add thales code into normal Ada test suite ?
+
+
+
 Email from Nicolas Anquetil (20 octobre 2016)
 
 Le resultat devrait etre:

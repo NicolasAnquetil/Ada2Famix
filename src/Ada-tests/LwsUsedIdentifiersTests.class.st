@@ -10,7 +10,7 @@ Class {
 
 { #category : #running }
 LwsUsedIdentifiersTests >> setUp [
-	model := THALESModel new.
+	model := ADAModel new.
 	visitor := LwsAdaVisitorRef new model: model ; yourself.
 
 ]

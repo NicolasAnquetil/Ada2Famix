@@ -16,12 +16,12 @@ package body FCFC is
 end FCFC;
 '.
 
-	invok := (model allWithType: ADAInvocation) first.
+	invok := (model allWithType: FAMIXInvocation) first.
 	self assert: invok notNil.
 	self assert: invok sourceAnchor notNil.
 	self assert: invok sourceAnchor startPos equals: 88.
 
-	invok := (model allWithType: ADAInvocation) second.
+	invok := (model allWithType: FAMIXInvocation) second.
 	self assert: invok notNil.
 	self assert: invok sourceAnchor notNil.
 	self assert: invok sourceAnchor startPos equals: 93
