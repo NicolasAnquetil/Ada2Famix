@@ -51,8 +51,3 @@ ADAPackage >> isPackage [
 ADAPackage >> isRoot [
 	^ self container class = ADATopLevelContainer
 ]
-
-{ #category : #'*SYNAda-Entities' }
-ADAPackage >> shouldShowInQuickTagging [
-	^ true
-]

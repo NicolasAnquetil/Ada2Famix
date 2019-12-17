@@ -25,20 +25,6 @@ ADAStructuralEntity class >> commonBooleanFilters [
 	^ super commonBooleanFilters, { #isConstant -> 'Is constant' }
 ]
 
-{ #category : #'*SYNAda-Entities-Lewis' }
-ADAStructuralEntity >> accept: aVisitor andAssociateWithPackageInstance: packageInstance [
-	"Double dispatch
-	The association is an Access"
-	^ aVisitor associatePackageInstance: packageInstance withStructural: self
-]
-
-{ #category : #'*SYNAda-Entities-Lewis' }
-ADAStructuralEntity >> accept: aVisitor andCreateAssociationWith: aQualifiedIdentifier [
-	"Double dispatch
-	The created association is an Access"
-	 ^ aVisitor createStructuralAccessResolvedAs: self
-]
-
 { #category : #accessing }
 ADAStructuralEntity >> adaDeclaredType [
 	"THIS IS REALLY UGLY AND WE KNOW IT :(
@@ -86,11 +72,6 @@ ADAStructuralEntity >> container: aContainer [
 		to: aContainer
 ]
 
-{ #category : #'*SYNAda-Entities-THALES' }
-ADAStructuralEntity >> correspondingThalesMessage [
-	^ self mooseModel variablesAndMessagesMap at: self ifAbsent: [ nil ]
-]
-
 { #category : #display }
 ADAStructuralEntity >> dataReceivedFrom: aContainerEntity [
 	"computes the set of variable within the scope of aContainerEntity that are used (i.e. read) in receiver"
@@ -124,20 +105,6 @@ ADAStructuralEntity >> isConstant [
 ADAStructuralEntity >> isConstant: anObject [
 	
 	isConstant := anObject
-]
-
-{ #category : #'*SYNAda-Entities-THALES' }
-ADAStructuralEntity >> isThalesCommunicationChannel [
-	<MSEProperty: #isThalesCommunicationChannel type: #Boolean>
-	<MSEComment: 'Whether this is a constant marking a Thales communication channel'>
-
-	^ self privateState attributeAt: #isThalesCommunicationChannel ifAbsent: [ false ]
-]
-
-{ #category : #'*SYNAda-Entities-THALES' }
-ADAStructuralEntity >> isThalesCommunicationChannel: aBoolean [
-
-	^ self privateState attributeAt: #isThalesCommunicationChannel put: aBoolean
 ]
 
 { #category : #resolving }
