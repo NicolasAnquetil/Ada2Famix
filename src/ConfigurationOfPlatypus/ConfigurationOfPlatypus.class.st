@@ -125,16 +125,10 @@ ConfigurationOfPlatypus >> baseline01: spec [
 				spec
 					className: #ConfigurationOfXMLWriter;
 					versionString: #'stable';
-					repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLWriter/main/' ];
-
-			baseline: 'Fame-Core'
-				with: [ spec
-					className: #BaselineOfXMLWriter;
-					loads: #('Core') ;
-					repository: 'github://moosetechnology/Moose/src' ].
+					repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLWriter/main/' ].
 		spec 
 			package: 'Platypus2' with: [
-				spec requires: #( 'PetitStepExpress' 'XMLWriter' 'Fame-Core' ). ];
+				spec requires: #( 'PetitStepExpress' 'XMLWriter' ). ];
 			package: 'Platypus2Pharo' with: [
 				spec requires: #('Platypus2' ). ]. ].
 
