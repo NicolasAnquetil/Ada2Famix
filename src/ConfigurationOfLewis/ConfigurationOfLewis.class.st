@@ -434,6 +434,40 @@ ConfigurationOfLewis >> baseline17: spec [
 						repository: 'http://smalltalkhub.com/mc/Moose/FASTCore/main' ] ]
 ]
 
+{ #category : #baselines }
+ConfigurationOfLewis >> baseline18: spec [
+	<version: '1.8-baseline'>
+	spec
+		for: #common
+		do: [ 
+			spec blessing: #'baseline'.
+			spec description: 'Trial for Moose 7'.
+			spec repository: 'github://NicolasAnquetil/Ada2Famix'.
+			spec
+				package: 'Lewis' with: [ spec requires: #('SmaCC' 'Platypus') ];
+				package: 'LewisHW' with: [ spec requires: 'Lewis' ];
+				package: 'LewisMoose' with: [ spec requires: #('LewisHW' 'FAST') ].
+
+		spec project: 'Platypus' with: [ 
+			spec className: 'ConfigurationOfPlatypus';
+			versionString: #development;
+			repository: 'http://smalltalkhub.com/mc/AlainPlantec/Platypus2/main/'.
+			"repository: 'http://www.smalltalkhub.com/mc/StephaneDucasse/Lewis/main'."
+		 ].
+			spec
+				baseline: 'SmaCC'
+				with: [ 
+					spec
+						repository: 'github://ThierryGoubier/SmaCC';
+						loads: #('Runtime') ].
+			spec
+				baseline: 'FAST'
+				with: [ spec
+                loads: #('default');
+                repository: 'github://moosetechnology/FAST:moose7/src' ].
+	]
+]
+
 { #category : #'symbolic versions' }
 ConfigurationOfLewis >> development: spec [
 	<symbolicVersion: #development>
@@ -441,6 +475,8 @@ ConfigurationOfLewis >> development: spec [
 	spec for: #common version: '1.7-baseline'.
 	
 	spec for: #'pharo4.x' version: '1.6-baseline'.
+
+	spec for: #'pharo7.x' version: '1.8-baseline'.
 ]
 
 { #category : #accessing }

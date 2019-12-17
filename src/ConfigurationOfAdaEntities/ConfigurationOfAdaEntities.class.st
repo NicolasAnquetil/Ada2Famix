@@ -144,7 +144,7 @@ ConfigurationOfAdaEntities >> baseline02: spec [
 			spec
 				package: #'FAST-Core-Resolution'  with: [ spec requires: #('FAST') ] ;
 				package: #'Ada-Entities'  with: [ spec requires: #('FAST-Core-Resolution') ] ;
-				package: #'Ada-tests' with: [ spec requires: #('Ada-Entities') ]
+				package: #'Ada-tests' with: [ spec requires: #('Ada-Entities' 'LewisMoose') ]
 		]
 ]
 
