@@ -129,9 +129,9 @@ ConfigurationOfPlatypus >> baseline01: spec [
 			project: 'Fame' with: [
 				spec
 					className: #ConfigurationOfFame;
-					versionString: #'development';
-					loads: #('Core' );
-					repository: 'http://smalltalkhub.com/mc/Moose/Fame/main/' ].
+					"versionString: #'development';
+					loads: #('Core' );"
+					repository: 'github://moosetechnology/Moose' ].
 		spec 
 			package: 'Platypus2' with: [
 				spec requires: #( 'PetitStepExpress' 'XMLWriter' 'Fame' ). ];
