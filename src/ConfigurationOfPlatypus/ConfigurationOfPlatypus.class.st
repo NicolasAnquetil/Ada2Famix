@@ -120,7 +120,7 @@ ConfigurationOfPlatypus >> baseline01: spec [
 				spec
 					className: #ConfigurationOfPetitStepExpress;
 					versionString: #'development';
-					repository: 'http://smalltalkhub.com/mc/AlainPlantec/StepExpress/main/' ];
+					repository: 'github://NicolasAnquetil/Ada2Famix' ];
 			project: 'XMLWriter' with: [
 				spec
 					className: #ConfigurationOfXMLWriter;
