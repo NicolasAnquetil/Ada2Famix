@@ -130,19 +130,24 @@ ConfigurationOfAdaEntities >> baseline01: spec [
 { #category : #baselines }
 ConfigurationOfAdaEntities >> baseline02: spec [
 	<version: '0.2-baseline'>
-	
-	"need to put lewis ? and platypus also ?"
+
 	spec
 		for: #common
 		do: [ spec blessing: #baseline.
 			spec repository: 'github://NicolasAnquetil/Ada2Famix'.
 			spec
-				baseline: 'FAST'
-				with: [ spec
+				baseline: 'FAST' with: [ spec
                 loads: #('default');
                 repository: 'github://moosetechnology/FAST:moose7/src' ].
+			spec 
+				project: 'Platypus' with: [
+					spec
+						className: #ConfigurationOfPlatypus;
+						versionString: #'development';
+						repository: 'github://NicolasAnquetil/Ada2Famix' ].
+
 			spec
-				package: #'Lewis' ;
+				package: #'Lewis'  with: [ spec requires: #('Platypus') ] ;
 				package: #'LewisHW'  with: [ spec requires: #('Lewis') ] ;
 				package: #'LewisMoose'  with: [ spec requires: #('LewisHW') ] ;
 				package: #'FAST-Core-Resolution'  with: [ spec requires: #('FAST') ] ;
