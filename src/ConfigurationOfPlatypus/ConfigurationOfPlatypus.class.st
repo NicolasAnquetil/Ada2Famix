@@ -114,7 +114,7 @@ ConfigurationOfPlatypus >> baseline01: spec [
 
 	spec for: #'common' do: [
 		spec blessing: #'baseline'.
-		spec repository: 'http://smalltalkhub.com/mc/AlainPlantec/Platypus2/main/'.
+		spec repository: 'http://smalltalkhub.com/mc/StephaneDucasse/Lewis/main/'.
 		spec 
 			project: 'PetitStepExpress' with: [
 				spec
