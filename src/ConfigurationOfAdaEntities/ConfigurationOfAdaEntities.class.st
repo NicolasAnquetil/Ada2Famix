@@ -127,6 +127,27 @@ ConfigurationOfAdaEntities >> baseline01: spec [
 		]
 ]
 
+{ #category : #baselines }
+ConfigurationOfAdaEntities >> baseline02: spec [
+	<version: '0.2-baseline'>
+	
+	"need to put lewis ? and platypus also ?"
+	spec
+		for: #common
+		do: [ spec blessing: #baseline.
+			spec repository: 'github://NicolasAnquetil/Ada2Famix'.
+			spec
+				baseline: 'FAST'
+				with: [ spec
+                loads: #('default');
+                repository: 'github://moosetechnology/FAST:moose7/src' ].
+			spec
+				package: #'FAST-Core-Resolution'  with: [ spec requires: #('FAST') ] ;
+				package: #'Ada-Entities'  with: [ spec requires: #('FAST-Core-Resolution') ] ;
+				package: #'Ada-tests' with: [ spec requires: #('Ada-Entities') ]
+		]
+]
+
 { #category : #accessing }
 ConfigurationOfAdaEntities >> customProjectAttributes [
     "Edit to return a collection of any custom attributes e.g. for conditional loading: Array with: #'Condition1' with: #'Condition2.
