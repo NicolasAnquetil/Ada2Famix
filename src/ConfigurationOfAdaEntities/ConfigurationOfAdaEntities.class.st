@@ -121,7 +121,7 @@ ConfigurationOfAdaEntities >> baseline01: spec [
 								baseline: 'FAST'
 								with: [ spec
 									loads: #('default');
-									repository: 'github://moosetechnology/FAST:master/src' ].
+									repository: 'github://moosetechnology/FAST:moose7/src' ].
  					].
 			spec
 				package: #'Ada-Entities'  with: [ spec requires: #('FAST') ] ;
