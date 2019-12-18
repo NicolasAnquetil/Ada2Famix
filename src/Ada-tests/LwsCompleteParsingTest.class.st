@@ -75,47 +75,6 @@ LwsCompleteParsingTest >> testConstantVariableLwsAdaVisitorRef [
 	model findThalesMessagesAndTasks 
 ]
 
-{ #category : #tests }
-LwsCompleteParsingTest >> testFASTERCaseAlternativeOnCommunicationChannel [
-	| search |
-	self parseAndVisit: { ThalesExamples communication_services_ads . ThalesExamples surveillance_adb . ThalesExamples input_radar_adb }.
-
-	model add: (THALESTask new adaTask: (model findEntityNamed: 'T_TA_INPUT_RADAR') ; yourself).
-	model add: (THALESTask new adaTask: (model findEntityNamed: 'T_TA_SURVEILLANCE') ; yourself).
-	model identifyThalesCommunicationChannels.
-
-	search := FASTERCaseAlternativeOnChannel runOnScope: model allAdaTasks first fastBehaviouralEntity.
-	self assert: search resultsAtTopLevel size equals: 1. "COMMUNICATION_SERVICES.INPUT_RADAR_TO_SURVEILLANCE"
-
-]
-
-{ #category : #tests }
-LwsCompleteParsingTest >> testFASTERCaseAlternativeTreatingMessage [
-	| search |
-	self parseAndVisit: {ThalesExamples piste_2d_ads . ThalesExamples piste_3d_ads . ThalesExamples input_radar_adb}.
-	search := FASTERCaseAlternativeTreatingMessage runOnScope: model allAdaTasks first fastBehaviouralEntity.
-	self assert: search resultsAtTopLevel size equals: 2. "PISTE_2D.MSG_CODE (a stub) PISTE_3D.MSG_CODE"
-
-	"found a case alternative with a choice that accesses variable PISTE_3D.MSG_CODE"
-	self assert: (search resultsAtTopLevel anySatisfy: [:alt |
-		alt choices anySatisfy: [:c |
-			c isAccess and:
-			[c variable container = (model findEntityNamed: 'PISTE_3D')]]]).
-	"same for PISTE_2D.MSG_CODE"
-	self assert: (search resultsAtTopLevel anySatisfy: [:alt |
-		alt choices anySatisfy: [:c |
-			c isAccess and:
-			[c variable container = (model findEntityNamed: 'PISTE_2D')]]]).
-
-]
-
-{ #category : #tests }
-LwsCompleteParsingTest >> testParseAllExamples [
-	 ThalesExamples class selectors do: [ :s | | result |
-		result := LwsParserForSynectique parse: (ThalesExamples perform: s).
-		self assert: result isPetitFailure not. ]
-]
-
 { #category : #visitor }
 LwsCompleteParsingTest >> visitorClasses [
 	^ { LwsAdaVisitorDef . LwsAdaVisitorRef }

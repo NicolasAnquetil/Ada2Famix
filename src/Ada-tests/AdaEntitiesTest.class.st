@@ -16,7 +16,7 @@ AdaEntitiesTest >> createADAEntity: aClass named: aName [
 { #category : #running }
 AdaEntitiesTest >> createAccessFrom: anEntity to: aVariable [
 
-	^ model add: (ADAAccess new accessor: anEntity ; variable: aVariable ; yourself) 
+	^ model add: (FAMIXAccess new accessor: anEntity ; variable: aVariable ; yourself) 
 ]
 
 { #category : #running }
@@ -114,7 +114,7 @@ AdaEntitiesTest >> testDataSentToSimple [
 { #category : #tests }
 AdaEntitiesTest >> testInvocationArguments [
 	| invok arg1 arg2 |
-	invok := ADAInvocation new.
+	invok := FAMIXInvocation new.
 	arg1 := ADAArgument new.
 	arg2 := ADAArgument new.
 

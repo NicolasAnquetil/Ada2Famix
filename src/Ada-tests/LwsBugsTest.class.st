@@ -27,7 +27,7 @@ LwsBugsTest >> testCaseRegression [
 	model exportToMSEStream: aStream.
 	aStream close.
 	aStream := StandardFileStream readOnlyFileNamed: mseFileName.
-	importedModel := THALESModel new importFromMSEStream: aStream.
+	importedModel := ADAModel new importFromMSEStream: aStream.
 	aStream close.
 	self assert: importedModel size equals: model size.
 	self verifyCaseStatementIn: importedModel.
@@ -59,7 +59,7 @@ LwsBugsTest >> testGenericExported [
 	model exportToMSEStream: aStream.
 	aStream close.
 	aStream := StandardFileStream readOnlyFileNamed: mseFileName.
-	importedModel := THALESModel new importFromMSEStream: aStream.
+	importedModel := ADAModel new importFromMSEStream: aStream.
 	aStream close.
 	self assert: importedModel size equals: model size.
 	self verifySubprogramWithinRenamedIn: model.
@@ -109,7 +109,7 @@ LwsBugsTest >> testProcInProc [
 	model exportToMSEStream: aStream.
 	aStream close.
 	aStream := StandardFileStream readOnlyFileNamed: mseFileName.
-	importedModel := THALESModel new importFromMSEStream: aStream.
+	importedModel := ADAModel new importFromMSEStream: aStream.
 	aStream close.
 	self assert: importedModel size equals: model size.
 	self verifyDeclareStatementsIn: importedModel.
@@ -185,7 +185,7 @@ LwsBugsTest >> verifyCaseStatementIn: aModel [
 	self assert: alternative choices notNil.
 	self assert: alternative choices size equals: 1.
 	choice := alternative choices first.
-	self assert: choice class equals: ADAAccess.
+	self assert: choice class equals: FAMIXAccess.
 	self assert: choice variable name equals: 'ARTIFACT'.
 	self assert: choice accessor name equals: 'cased_procedure'.
 	alternative := case alternatives second.

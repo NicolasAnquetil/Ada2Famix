@@ -320,7 +320,7 @@ end PCKG;
 	case := task fastBehaviouralEntity statementBlock statements first.
 	self assert: case notNil.
 	self flag: 'should be a StructuralEntity'.
-	self assert: case expression class equals: ADAAccess.
+	self assert: case expression class equals: FAMIXAccess.
 	self assert: case expression variable name equals: 'aVar'.
 
 	self assert: case alternatives size equals: 2.
@@ -354,7 +354,7 @@ end PCKG;
 	self assert: task fastBehaviouralEntity statementBlock statements size equals: 1.
 	case := task fastBehaviouralEntity statementBlock statements first.
 	self assert: case notNil.
-	self assert: case expression class equals: ADAAccess.
+	self assert: case expression class equals: FAMIXAccess.
 	self assert: case expression variable name equals: 'aVar'.
 
 	"first alternative in outer CASE"
