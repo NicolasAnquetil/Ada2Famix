@@ -6,12 +6,12 @@ Class {
 
 { #category : #accessing }
 FASTAdaGenerator class >> packageName [
-	^ #'Famix-Ada-Entities'
+	^ #'FAST-Ada-Entities'
 ]
 
 { #category : #accessing }
 FASTAdaGenerator class >> prefix [
-	^ #'FamixFortran'
+	^ #'FASTAda'
 ]
 
 { #category : #definition }

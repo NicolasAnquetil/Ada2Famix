@@ -1,6 +1,36 @@
 Class {
 	#name : #FamixAdaGenerator,
 	#superclass : #FamixFileBasedLanguageGenerator,
+	#instVars : [
+		'compilationUnit',
+		'container',
+		'aggregateArgument',
+		'argument',
+		'attribute',
+		'genericPackageInstanciation',
+		'genericSubprogramInstanciation',
+		'initializingInvocation',
+		'instanceableEntity',
+		'method',
+		'package',
+		'packageAlias',
+		'parameter',
+		'separateDeclaration',
+		'subprogram',
+		'task',
+		'topLevelContainer',
+		'type',
+		'typeAccess',
+		'typeAccessSubprogram',
+		'typeArray',
+		'typeClass',
+		'typeEnum',
+		'typeMod',
+		'typeRange',
+		'typeRecord',
+		'typeTask',
+		'unknownContainer'
+	],
 	#category : #'Famix-Ada-Generator'
 }
 
@@ -11,7 +41,7 @@ FamixAdaGenerator class >> packageName [
 
 { #category : #accessing }
 FamixAdaGenerator class >> prefix [
-	^ #'FamixFortran'
+	^ #'ADA'
 ]
 
 { #category : #definition }
@@ -19,18 +49,35 @@ FamixAdaGenerator >> defineClasses [
 
 	super defineClasses.
 
-"#ADAAggregateArgument #ADAArgument #ADAAttribute #ADACompilationUnit #ADAGenericPackageInstanciation #ADAGenericSubprogramInstanciation #ADAInitializingInvocation #ADAInstanceableEntity #ADAMethod #ADAModel #ADAPackage #ADAPackageAlias #ADAParameter #ADASeparateDeclaration #ADASourceLanguage #ADASubprogram #ADATask #ADATopLevelContainer #ADAType #ADATypeAccess #ADATypeAccessSubprogram #ADATypeArray #ADATypeClass #ADATypeEnum #ADATypeMod #ADATypeRange #ADATypeRecord #ADATypeTask #ADAUnknownContainer"
-
-	"compilationUnit := builder  newClassNamed: #CompilationUnit.
-	module := builder  newClassNamed: #Module.
-	program := builder  newClassNamed: #Program.
-	globalVariable := builder newClassNamed: #GlobalVariable.
-	localVariable := builder newClassNamed: #LocalVariable.
+	container := builder newClassNamed: #ContainerEntity.
+	"tInstanceable := builder newClassNamed: #TInstanceable."
+	aggregateArgument := builder newClassNamed: #AggregateArgument.
+	argument := builder newClassNamed: #Argument.
+	attribute := builder newClassNamed: #Attribute.
+	compilationUnit := builder newClassNamed: #CompilationUnit.
+	genericPackageInstanciation := builder newClassNamed: #GenericPackageInstanciation.
+	genericSubprogramInstanciation := builder newClassNamed: #GenericSubprogramInstanciation.
+	initializingInvocation := builder newClassNamed: #InitializingInvocation.
+	method := builder newClassNamed: #Method.
+	package := builder newClassNamed: #Package.
+	packageAlias := builder newClassNamed: #PackageAlias.
 	parameter := builder newClassNamed: #Parameter.
-	function := builder newClassNamed: #Function.
+	separateDeclaration := builder newClassNamed: #SeparateDeclaration.
+	subprogram := builder newClassNamed: #Subprogram.
+	task := builder newClassNamed: #Task.
+	topLevelContainer := builder newClassNamed: #TopLevelContainer.
 	type := builder newClassNamed: #Type.
-	invocation := builder newClassNamed: #Invocation.
-	access := builder newClassNamed: #Access."
+	typeAccess := builder newClassNamed: #TypeAccess.
+	typeAccessSubprogram := builder newClassNamed: #TypeAccessSubprogram.
+	typeArray := builder newClassNamed: #TypeArray.
+	typeClass := builder newClassNamed: #TypeClass.
+	typeEnum := builder newClassNamed: #TypeEnum.
+	typeMod := builder newClassNamed: #TypeMod.
+	typeRange := builder newClassNamed: #TypeRange.
+	typeRecord := builder newClassNamed: #TypeRecord.
+	typeTask := builder newClassNamed: #TypeTask.
+	unknownContainer := builder newClassNamed: #UnknownContainer.
+
 ]
 
 { #category : #definition }
@@ -38,78 +85,50 @@ FamixAdaGenerator >> defineHierarchy [
 
 	super defineHierarchy.
 
-	"access --|> association.
-	access --|> #TAccess.
+	container --|> namedEntity.
+	container --|> #TNamespace.
+	container --|> #TWithLocalVariables.
+	
+	"tInstanceable := builder newClassNamed: #TInstanceable."
+	
+	"aggregateArgument := builder newClassNamed: #AggregateArgument.
+	argument := builder newClassNamed: #Argument.
+	attribute := builder newClassNamed: #Attribute."
 
-	invocation --|> association.
-	invocation --|> #TInvocation.
-	invocation --|> #TWithSignature.
+	compilationUnit --|> container.	
+	compilationUnit --|> #TCompilationUnit.
 
-	compilationUnit --|> namedEntity.
-	compilationUnit --|> #TWithFunctions.
-	compilationUnit --|> #TWithTypes.
-	compilationUnit --|> #TGlobalVariableScope.
-	compilationUnit --|> #TNamespace.
+	"genericPackageInstanciation := builder newClassNamed: #GenericPackageInstanciation.
+	genericSubprogramInstanciation := builder newClassNamed: #GenericSubprogramInstanciation.
+	initializingInvocation := builder newClassNamed: #InitializingInvocation.
+	method := builder newClassNamed: #Method."
 
-	module --|> namedEntity.
-	module --|> #TModule.
-	module --|> #TImportable.
-	module --|> #TWithImports.
-	module --|> #TWithFunctions.
-	module --|> #TWithTypes.
-	module --|> #TGlobalVariableScope.
-	module --|> #TNamespace.
+	package --|> container.
+	package --|> #TPackage.
+	package --|> #TWithFunctions.
+	package --|> #TWithLocalVariables.
+	
+	"packageAlias := builder newClassNamed: #PackageAlias.
+	parameter := builder newClassNamed: #Parameter.
+	separateDeclaration := builder newClassNamed: #SeparateDeclaration."
 
-	globalVariable --|> namedEntity.
-	globalVariable --|> #TStructuralEntity.
-	globalVariable --|> #TGlobalVariable.
-	globalVariable --|> #TDefinedInModule.
-	globalVariable --|> #TPossibleStub.
-	globalVariable --|> #TNamespaceEntity.
+	subprogram --|> container.
+	subprogram --|> #TFunction.
+	subprogram --|> #TWithLocalVariables.
 
-	program --|> namedEntity.
-	program --|> #TWithTypes.
-	program --|> #TWithLocalVariables.
-	program --|> #TWithStatements.
-	program --|> #TWithAccesses.
-	program --|> #TWithInvocations.
-	program --|> #TDefinedInModule.
-	program --|> #TWithImports.
-	program --|> #TNamespaceEntity.
-	program --|> #TNamespace.
-
-	function --|> namedEntity.
-	function --|> #TFunction.
-	function --|> #TWithStatements.
-	function --|> #TWithAccesses.
-	function --|> #TWithInvocations.
-	function --|> #TNamespace.
-	function --|> #TInvocable.
-	function --|> #TPossibleStub.
-	function --|> #TWithLocalVariables.
-	function --|> #TWithParameters.
-	function --|> #TDefinedInModule.
-	function --|> #TNamespaceEntity.
-	function --|> #TWithSignature.
-
-	localVariable --|> namedEntity.
-	localVariable --|> #TStructuralEntity.
-	localVariable --|> #TLocalVariable.
-	localVariable --|> #TNamespaceEntity.
-
-	parameter --|> namedEntity.
-	parameter --|> #TStructuralEntity.
-	parameter --|> #TPara
-meter.
-	parameter --|> #TNamespaceEntity.
-
-	type --|> namedEntity.
-	type --|> #TType.
-	type --|> #TWithTypeAliases.
-	type --|> #TParameterizedTypeUser.
-	type --|> #TDefinedInModule.
-	type --|> #TNamespaceEntity."
-
+	"task := builder newClassNamed: #Task.
+	topLevelContainer := builder newClassNamed: #TopLevelContainer.
+	type := builder newClassNamed: #Type.
+	typeAccess := builder newClassNamed: #TypeAccess.
+	typeAccessSubprogram := builder newClassNamed: #TypeAccessSubprogram.
+	typeArray := builder newClassNamed: #TypeArray.
+	typeClass := builder newClassNamed: #TypeClass.
+	typeEnum := builder newClassNamed: #TypeEnum.
+	typeMod := builder newClassNamed: #TypeMod.
+	typeRange := builder newClassNamed: #TypeRange.
+	typeRecord := builder newClassNamed: #TypeRecord.
+	typeTask := builder newClassNamed: #TypeTask.
+	unknownContainer := builder newClassNamed: #UnknownContainer."
 
 ]
 
