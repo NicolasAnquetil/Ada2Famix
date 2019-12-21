@@ -21,7 +21,7 @@ AdaEntitiesTest >> createAccessFrom: anEntity to: aVariable [
 
 { #category : #running }
 AdaEntitiesTest >> setUp [
-	model := ADAModel new
+	model := MooseModel new
 ]
 
 { #category : #tests }

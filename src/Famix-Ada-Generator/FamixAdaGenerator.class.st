@@ -29,7 +29,8 @@ Class {
 		'typeRange',
 		'typeRecord',
 		'typeTask',
-		'unknownContainer'
+		'unknownContainer',
+		'structural'
 	],
 	#category : #'Famix-Ada-Generator'
 }
@@ -63,6 +64,7 @@ FamixAdaGenerator >> defineClasses [
 	packageAlias := builder newClassNamed: #PackageAlias.
 	parameter := builder newClassNamed: #Parameter.
 	separateDeclaration := builder newClassNamed: #SeparateDeclaration.
+	structural := builder newClassNamed: #StructuralEntity.
 	subprogram := builder newClassNamed: #Subprogram.
 	task := builder newClassNamed: #Task.
 	topLevelContainer := builder newClassNamed: #TopLevelContainer.
@@ -108,14 +110,16 @@ FamixAdaGenerator >> defineHierarchy [
 	package --|> #TWithFunctions.
 	package --|> #TWithLocalVariables.
 	
-	"packageAlias := builder newClassNamed: #PackageAlias.
-	parameter := builder newClassNamed: #Parameter.
-	separateDeclaration := builder newClassNamed: #SeparateDeclaration."
+	"packageAlias := builder newClassNamed: #PackageAlias."
+	parameter --|> structural.
+	"separateDeclaration := builder newClassNamed: #SeparateDeclaration."
 
 	subprogram --|> container.
 	subprogram --|> #TFunction.
 	subprogram --|> #TWithLocalVariables.
 
+	structural --|> namedEntity.
+	
 	"task := builder newClassNamed: #Task.
 	topLevelContainer := builder newClassNamed: #TopLevelContainer.
 	type := builder newClassNamed: #Type.
@@ -129,6 +133,22 @@ FamixAdaGenerator >> defineHierarchy [
 	typeRecord := builder newClassNamed: #TypeRecord.
 	typeTask := builder newClassNamed: #TypeTask.
 	unknownContainer := builder newClassNamed: #UnknownContainer."
+
+]
+
+{ #category : #definition }
+FamixAdaGenerator >> defineProperties [
+	super defineProperties.
+	
+	topLevelContainer withTesting.
+
+
+	((structural property: #container)
+			comment: 'Parent ContrainerEntity';
+			container)
+		*-
+	((container property: #localVariables)
+			comment: 'Variables defined in the container, if any.').
 
 ]
 
