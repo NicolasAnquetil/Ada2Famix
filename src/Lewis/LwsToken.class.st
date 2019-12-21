@@ -104,6 +104,12 @@ LwsToken >> id: anArrayOfNumber [
 	id := anArrayOfNumber
 ]
 
+{ #category : #'explicit attributes' }
+LwsToken >> ids [
+	self flag: 'for compatibility with LwsParser'.
+	^ id
+]
+
 { #category : #'initialize-release' }
 LwsToken >> initialize [
 	<generatedByPlatypus>
