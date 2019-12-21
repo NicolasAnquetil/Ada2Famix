@@ -30,7 +30,8 @@ Class {
 		'typeRecord',
 		'typeTask',
 		'unknownContainer',
-		'structural'
+		'structural',
+		'access'
 	],
 	#category : #'Famix-Ada-Generator'
 }
@@ -49,6 +50,8 @@ FamixAdaGenerator class >> prefix [
 FamixAdaGenerator >> defineClasses [
 
 	super defineClasses.
+	
+	access := builder newClassNamed: #Access.
 
 	container := builder newClassNamed: #ContainerEntity.
 	"tInstanceable := builder newClassNamed: #TInstanceable."
@@ -87,9 +90,13 @@ FamixAdaGenerator >> defineHierarchy [
 
 	super defineHierarchy.
 
+	access --|> association.
+	access --|> #TAccess.
+
 	container --|> namedEntity.
 	container --|> #TNamespace.
 	container --|> #TWithLocalVariables.
+	container --|> #TWithAccesses.  "should be lower in hierarchy? Like BehaviouralEntity ?"
 	
 	"tInstanceable := builder newClassNamed: #TInstanceable."
 	
@@ -119,6 +126,7 @@ FamixAdaGenerator >> defineHierarchy [
 	subprogram --|> #TWithLocalVariables.
 
 	structural --|> namedEntity.
+	structural --|> #TAccessible.
 	
 	"task := builder newClassNamed: #Task.
 	topLevelContainer := builder newClassNamed: #TopLevelContainer.
