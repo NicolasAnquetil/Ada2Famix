@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : #'Ada-tests'
+	#category : #'Ada-DataFlow-tests'
 }
 
 { #category : #running }
@@ -65,13 +65,17 @@ AdaEntitiesTest >> testADAAccessIndirectWithin [
 { #category : #tests }
 AdaEntitiesTest >> testDataSentToMultiple [
 	| pckg proc var1 var2 acc1 acc2 |
-	pckg := model add: (self createADAEntity: ADAPackage named: 'pckg').
-	proc := model add: (self createADAEntity: ADASubprogram named: 'proc').
+	pckg :=  self createADAEntity: ADAPackage named: 'pckg'.
+	model add: pckg.
+	proc := self createADAEntity: ADASubprogram named: 'proc'.
+	model add: proc.
 	proc container: pckg.
-	var1 := model add: (self createADAEntity: ADAStructuralEntity named: 'var1').
+	var1 := self createADAEntity: ADAStructuralEntity named: 'var1'.
 	var1 container: pckg.
-	var2 := model add: (self createADAEntity: ADAStructuralEntity named: 'var2').
+	model add: var1.
+	var2 := self createADAEntity: ADAStructuralEntity named: 'var2'.
 	var2 container: pckg.
+	model add: var2.
 
 	acc1 := self createAccessFrom: pckg to: var1.
 	acc1 isWrite: false.

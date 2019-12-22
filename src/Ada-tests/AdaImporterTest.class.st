@@ -10,7 +10,7 @@ Class {
 { #category : #running }
 AdaImporterTest >> setUp [
 	importer := AdaImporter new.
-	importer model: MooseModel new.
+	importer model: ADAModel new.
 	
 ]
 
