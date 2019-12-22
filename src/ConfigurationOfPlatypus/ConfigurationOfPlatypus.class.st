@@ -127,8 +127,10 @@ ConfigurationOfPlatypus >> baseline01: spec [
 					versionString: #'stable';
 					repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLWriter/main/' ].
 		spec 
+			package: 'PetitSmalltalk' with: [
+				spec repository: 'github://moosetechnology/PetitParser' ];
 			package: 'Platypus2' with: [
-				spec requires: #( 'PetitStepExpress' 'XMLWriter' ). ];
+				spec requires: #( 'PetitSmalltalk' 'PetitStepExpress' 'XMLWriter' ). ];
 			package: 'Platypus2Pharo' with: [
 				spec requires: #('Platypus2' ). ]. ].
 
