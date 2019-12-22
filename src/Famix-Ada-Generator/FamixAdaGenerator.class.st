@@ -38,7 +38,7 @@ Class {
 
 { #category : #accessing }
 FamixAdaGenerator class >> packageName [
-	^ #'Famix-Ada-Entities'
+	^ #'Famix-Ada'
 ]
 
 { #category : #accessing }
@@ -50,9 +50,8 @@ FamixAdaGenerator class >> prefix [
 FamixAdaGenerator >> defineClasses [
 
 	super defineClasses.
-	
-	access := builder newClassNamed: #Access.
 
+	access := builder newClassNamed: #Access.
 	container := builder newClassNamed: #ContainerEntity.
 	"tInstanceable := builder newClassNamed: #TInstanceable."
 	aggregateArgument := builder newClassNamed: #AggregateArgument.
@@ -150,7 +149,29 @@ FamixAdaGenerator >> defineProperties [
 	
 	topLevelContainer withTesting.
 
+]
 
+{ #category : #definition }
+FamixAdaGenerator >> defineRelations [
+	super defineRelations.
+
+	self flag: 'Could we be more specific than AdaContainerEntity ?'.
+	((package property: #container)
+			comment: 'The container defining this package.';
+			container)
+		*-
+	((container property: #packages)
+			comment: 'Packages defined in the container, if any.').
+
+	self flag: 'Could we be more specific than AdaContainerEntity ?'.
+	self flag: 'Not marked #container because FamixTFunction already has one such property: #functionOwner'.
+	((subprogram property: #container)
+			comment: 'The container defining this subprogram.')
+		*-
+	((container property: #subprograms)
+			comment: 'Subprograms defined in the container, if any.').
+
+	self flag: 'Could we be more specific than AdaContainerEntity ?'.
 	((structural property: #container)
 			comment: 'Parent ContrainerEntity';
 			container)
@@ -158,20 +179,4 @@ FamixAdaGenerator >> defineProperties [
 	((container property: #localVariables)
 			comment: 'Variables defined in the container, if any.').
 
-]
-
-{ #category : #definition }
-FamixAdaGenerator >> defineRelations [
-	super defineRelations.
-
-	"((tWithImports property: #importedEntities)
-			comment: 'The entities that are imported by this one' ;
-			source)
-		*-*
-	((tImportable property: #importers)
-			comment: 'The entities that import this one' ;
-			target ;
-			derived).
-			
-	compilationUnit <>- module."
 ]
