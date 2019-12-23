@@ -9,7 +9,7 @@ END_ENTITY;
 "
 Class {
 	#name : #LwsGenericDeclaration,
-	#superclass : #Object,
+	#superclass : #LwsBasicDeclaration,
 	#instVars : [
 		'declaration',
 		'formalPart'
