@@ -6,8 +6,8 @@ So FASTAdaDeclareScope inherits from FAMIXContainerEntityScope but searches for 
 "
 Class {
 	#name : #FASTAdaDeclareScope,
-	#superclass : #FAMIXContainerEntityScope,
-	#category : #'Ada-Entities-FAST-Scope'
+	#superclass : #FASTAdaScope,
+	#category : #'Famix-Ada-Generator-predefinedFAST'
 }
 
 { #category : #resolving }

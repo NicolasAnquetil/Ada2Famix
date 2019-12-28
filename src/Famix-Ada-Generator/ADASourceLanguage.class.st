@@ -3,7 +3,7 @@ Class {
 	#superclass : #ADAEntity,
 	#traits : 'FamixTSourceLanguage',
 	#classTraits : 'FamixTSourceLanguage classTrait',
-	#category : #'Famix-Ada-Generator-predefined'
+	#category : #'Famix-Ada-Generator-predefinedFamix'
 }
 
 { #category : #'instance creation' }

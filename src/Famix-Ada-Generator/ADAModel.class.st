@@ -4,7 +4,7 @@ I hold methods to be copied into ADAModel after it is generated
 Class {
 	#name : #ADAModel,
 	#superclass : #MooseModel,
-	#category : #'Famix-Ada-Generator-predefined'
+	#category : #'Famix-Ada-Generator-predefinedFamix'
 }
 
 { #category : #'initialize-release' }

@@ -31,7 +31,8 @@ Class {
 		'typeTask',
 		'unknownContainer',
 		'structural',
-		'access'
+		'access',
+		'fastScope'
 	],
 	#category : #'Famix-Ada-Generator'
 }
@@ -44,6 +45,11 @@ FamixAdaGenerator class >> packageName [
 { #category : #accessing }
 FamixAdaGenerator class >> prefix [
 	^ #'ADA'
+]
+
+{ #category : #accessing }
+FamixAdaGenerator class >> submetamodels [
+	^ { FASTAdaGenerator }
 ]
 
 { #category : #definition }
@@ -82,6 +88,7 @@ FamixAdaGenerator >> defineClasses [
 	typeTask := builder newClassNamed: #TypeTask.
 	unknownContainer := builder newClassNamed: #UnknownContainer.
 
+	fastScope := self remoteEntity: #Scope withPrefix: #FASTAda.
 ]
 
 { #category : #definition }
@@ -96,6 +103,7 @@ FamixAdaGenerator >> defineHierarchy [
 	container --|> #TNamespace.
 	container --|> #TWithLocalVariables.
 	container --|> #TWithAccesses.  "should be lower in hierarchy? Like BehaviouralEntity ?"
+	container --|> #TScopable.
 	
 	"tInstanceable := builder newClassNamed: #TInstanceable."
 	
@@ -127,19 +135,7 @@ FamixAdaGenerator >> defineHierarchy [
 	structural --|> namedEntity.
 	structural --|> #TAccessible.
 	
-	"task := builder newClassNamed: #Task.
-	topLevelContainer := builder newClassNamed: #TopLevelContainer.
-	type := builder newClassNamed: #Type.
-	typeAccess := builder newClassNamed: #TypeAccess.
-	typeAccessSubprogram := builder newClassNamed: #TypeAccessSubprogram.
-	typeArray := builder newClassNamed: #TypeArray.
-	typeClass := builder newClassNamed: #TypeClass.
-	typeEnum := builder newClassNamed: #TypeEnum.
-	typeMod := builder newClassNamed: #TypeMod.
-	typeRange := builder newClassNamed: #TypeRange.
-	typeRecord := builder newClassNamed: #TypeRecord.
-	typeTask := builder newClassNamed: #TypeTask.
-	unknownContainer := builder newClassNamed: #UnknownContainer."
+	topLevelContainer --|> container.
 
 ]
 
@@ -175,5 +171,12 @@ FamixAdaGenerator >> defineRelations [
 		*-
 	((container property: #localVariables)
 			comment: 'Variables defined in the container, if any.').
+
+	"For now this is inherited from FAST-Core-Resolution#FASTScope
+	((fastScope property: #owner)
+		comment: 'Entity owning this scope')
+		--
+	((container property: #fastScope)
+		comment: 'A FastScope associated to this entity')."
 
 ]

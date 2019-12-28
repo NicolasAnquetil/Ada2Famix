@@ -7,11 +7,8 @@ USE clause in Ada is manage by adding the scope of the used package to the paren
 "
 Class {
 	#name : #FASTAdaContainerScope,
-	#superclass : #FAMIXContainerEntityScope,
-	#instVars : [
-		'parents'
-	],
-	#category : #'Ada-Entities-FAST-Scope'
+	#superclass : #FASTAdaScope,
+	#category : #'Famix-Ada-Generator-predefinedFAST'
 }
 
 { #category : #'as yet unclassified' }
@@ -51,9 +48,7 @@ FASTAdaContainerScope >> initialize [
 { #category : #resolving }
 FASTAdaContainerScope >> lookupSelectors [
 
-	#advancedLookup.
-	^super lookupSelectors 
-		, #(#localVariables #packages #separates #tasks)
+	^ #(#localVariables #packages #subprograms)
 	
 ]
 

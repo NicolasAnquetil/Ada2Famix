@@ -4,7 +4,7 @@ A FastAdaContainerScope for subprograms. They have parameters which need to be l
 Class {
 	#name : #FASTAdaSubprogramScope,
 	#superclass : #FASTAdaContainerScope,
-	#category : #'Ada-Entities-FAST-Scope'
+	#category : #'Famix-Ada-Generator-predefinedFAST'
 }
 
 { #category : #resolving }
