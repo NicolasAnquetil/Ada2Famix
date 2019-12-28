@@ -1,7 +1,7 @@
 Class {
 	#name : #FASTAdaGenerator,
 	#superclass : #FamixFileBasedLanguageGenerator,
-	#category : #'FAST-Ada-Generator'
+	#category : #'Famix-Ada-Generator'
 }
 
 { #category : #accessing }
