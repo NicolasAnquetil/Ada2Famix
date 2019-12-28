@@ -155,7 +155,6 @@ FamixAdaGenerator >> defineProperties [
 FamixAdaGenerator >> defineRelations [
 	super defineRelations.
 
-	self flag: 'Could we be more specific than AdaContainerEntity ?'.
 	((package property: #container)
 			comment: 'The container defining this package.';
 			container)
@@ -163,7 +162,6 @@ FamixAdaGenerator >> defineRelations [
 	((container property: #packages)
 			comment: 'Packages defined in the container, if any.').
 
-	self flag: 'Could we be more specific than AdaContainerEntity ?'.
 	self flag: 'Not marked #container because FamixTFunction already has one such property: #functionOwner'.
 	((subprogram property: #container)
 			comment: 'The container defining this subprogram.')
@@ -171,7 +169,6 @@ FamixAdaGenerator >> defineRelations [
 	((container property: #subprograms)
 			comment: 'Subprograms defined in the container, if any.').
 
-	self flag: 'Could we be more specific than AdaContainerEntity ?'.
 	((structural property: #container)
 			comment: 'Parent ContrainerEntity';
 			container)
