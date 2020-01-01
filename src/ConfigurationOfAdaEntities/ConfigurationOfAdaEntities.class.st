@@ -136,9 +136,11 @@ ConfigurationOfAdaEntities >> baseline02: spec [
 		do: [ spec blessing: #baseline.
 			spec repository: 'github://NicolasAnquetil/Ada2Famix'.
 			spec
-				baseline: 'FAST' with: [ spec
-                loads: #('default');
-                repository: 'github://moosetechnology/FAST:moose7/src' ].
+				project: 'FASTCore'
+				with: [ spec
+						className: #ConfigurationOfFASTCore;
+						versionString: '0.5';
+						repository: 'http://smalltalkhub.com/mc/Moose/FASTCore/main/' ].
 			spec 
 				project: 'Platypus' with: [
 					spec
@@ -150,8 +152,7 @@ ConfigurationOfAdaEntities >> baseline02: spec [
 				package: #'Lewis'  with: [ spec requires: #('Platypus') ] ;
 				package: #'LewisHW'  with: [ spec requires: #('Lewis') ] ;
 				package: #'LewisMoose'  with: [ spec requires: #('LewisHW') ] ;
-				package: #'FAST-Core-Resolution'  with: [ spec requires: #('FAST') ] ;
-				package: #'Ada-Entities'  with: [ spec requires: #('FAST-Core-Resolution') ] ;
+				package: #'Ada-Entities'  with: [ spec requires: #('FASTCore') ] ;
 				package: #'Ada-tests' with: [ spec requires: #('Ada-Entities' 'LewisMoose') ]
 		]
 ]
