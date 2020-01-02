@@ -25,6 +25,20 @@ ADAStructuralEntity class >> commonBooleanFilters [
 	^ super commonBooleanFilters, { #isConstant -> 'Is constant' }
 ]
 
+{ #category : #'Ada-Entities-Lewis' }
+ADAStructuralEntity >> accept: aVisitor andAssociateWithPackageInstance: packageInstance [
+	"Double dispatch
+	The association is an Access"
+	^ aVisitor associatePackageInstance: packageInstance withStructural: self
+]
+
+{ #category : #'Ada-Entities-Lewis' }
+ADAStructuralEntity >> accept: aVisitor andCreateAssociationWith: aQualifiedIdentifier [
+	"Double dispatch
+	The created association is an Access"
+	 ^ aVisitor createStructuralAccessResolvedAs: self
+]
+
 { #category : #accessing }
 ADAStructuralEntity >> adaDeclaredType [
 	"THIS IS REALLY UGLY AND WE KNOW IT :(

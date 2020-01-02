@@ -33,6 +33,13 @@ ADAType class >> annotation [
 	<package: #ADA>
 ]
 
+{ #category : #'Ada-Entities-Lewis' }
+ADAType >> accept: aVisitor andAssociateWithPackageInstance: packageInstance [
+	"Double dispatch
+	The association is a Reference"
+	^ aVisitor associatePackageInstance: packageInstance withType: self
+]
+
 { #category : #accessing }
 ADAType >> addElement: anElement [
 	self addLocalVariable: anElement

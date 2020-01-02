@@ -34,6 +34,13 @@ ADASubprogram class >> commonBooleanFilters [
 			(#isProcedure -> 'Is Procedure')}
 ]
 
+{ #category : #'Ada-Entities-Lewis' }
+ADASubprogram >> accept: aVisitor andCreateAssociationWith: aQualifiedIdentifier [
+	"Double dispatch
+	The created association is an Invokation"
+	^aVisitor createSubprogramInvocationFor: aQualifiedIdentifier resolvedAs: self
+]
+
 { #category : #accessing }
 ADASubprogram >> addIncomingInvocation: anInvocation [
 	incomingInvocations add: anInvocation
