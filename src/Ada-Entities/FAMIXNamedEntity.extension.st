@@ -7,6 +7,13 @@ FAMIXNamedEntity class >> isAlias [
 ]
 
 { #category : #'*Ada-Entities' }
+FAMIXNamedEntity >> isBelongingTo: anotherEntity [
+	^ self belongsTo
+		ifNil: [ false ]
+		ifNotNil: [ self belongsTo = anotherEntity or: [ self belongsTo isBelongingTo: anotherEntity ] ]
+]
+
+{ #category : #'*Ada-Entities' }
 FAMIXNamedEntity >> parentSelector [
 	self deprecated: '01/09/2017 Cyril: Instead of doing `self perform: self parentSelector`, just call #belongsTo'.
 	^ #belongsTo
