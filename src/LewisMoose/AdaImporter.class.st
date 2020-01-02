@@ -11,8 +11,32 @@ Class {
 		'programName',
 		'programPath'
 	],
+	#classInstVars : [
+		'lewisASTBuilder'
+	],
 	#category : #LewisMoose
 }
+
+{ #category : #modes }
+AdaImporter class >> inModeSymbol [
+	^ self lewisASTBuilder inMode
+]
+
+{ #category : #modes }
+AdaImporter class >> inOutModeSymbol [
+	^ self lewisASTBuilder inOutMode
+]
+
+{ #category : #modes }
+AdaImporter class >> lewisASTBuilder [
+	lewisASTBuilder ifNil: [ lewisASTBuilder := LwsAstBuilder new ].
+	^ lewisASTBuilder
+]
+
+{ #category : #modes }
+AdaImporter class >> outModeSymbol [
+	^ self lewisASTBuilder outMode
+]
 
 { #category : #cleaning }
 AdaImporter >> clearModel [
