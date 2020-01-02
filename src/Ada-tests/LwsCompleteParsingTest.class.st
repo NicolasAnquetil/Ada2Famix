@@ -69,12 +69,6 @@ LwsCompleteParsingTest >> testComputeArgsForAnInvocationWithAssoc [
 	self assert: invok arguments first argument name equals: 'MSG_POINTER'.
 ]
 
-{ #category : #tests }
-LwsCompleteParsingTest >> testConstantVariableLwsAdaVisitorRef [
-	self parseAndVisit: self class constantVariable.
-	model findThalesMessagesAndTasks 
-]
-
 { #category : #visitor }
 LwsCompleteParsingTest >> visitorClasses [
 	^ { LwsAdaVisitorDef . LwsAdaVisitorRef }

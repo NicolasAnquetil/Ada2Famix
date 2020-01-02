@@ -406,22 +406,6 @@ LwsAdaRefNameResolutionTest >> testResolveSymbol2 [
 ]
 
 { #category : #testing }
-LwsAdaRefNameResolutionTest >> testSendsThalesMessageDirect [
-
-	self parseAndVisit: { ThalesExamples communication_services_ads }.
-
-	self assert: (model entities detect: [ :e | e name = 'SEND']) sendsThalesMessage
-]
-
-{ #category : #testing }
-LwsAdaRefNameResolutionTest >> testSendsThalesMessageIndirect [
-
-	self parseAndVisit: { ThalesExamples surveillance_adb . ThalesExamples tracks_1_adb . ThalesExamples tracks_1_characterization . ThalesExamples send_and_record_if_necessary . ThalesExamples communication_services_msg_manager .ThalesExamples communication_services_ads }.
-
-	self assert: (model entities detect: [ :e | e name = 'TREAT_RADAR_MESSAGES']) sendsThalesMessage
-]
-
-{ #category : #testing }
 LwsAdaRefNameResolutionTest >> testSubProgNbParams [
 	| symb0 pckg symb4 |
 	self parseAndVisit: '
