@@ -40,6 +40,11 @@ FAMIXEntity >> isAdaUnknownContainer [
 	^ false
 ]
 
+{ #category : #'*Ada-Entities' }
+FAMIXEntity >> isFAMIXEntity [
+	^ true
+]
+
 { #category : #'*Ada-Entities-FAMIX' }
 FAMIXEntity >> isTopLevelContainer [
 	^ false
