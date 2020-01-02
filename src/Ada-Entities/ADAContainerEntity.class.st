@@ -232,8 +232,10 @@ ADAContainerEntity >> lookup: aSymbol where: aBlock [
 { #category : #display }
 ADAContainerEntity >> mooseNameOn: aStream [
 	(self container isNotNil 
-		and: [ self container isTopLevelContainer not 
-		and: [ self container name isNotNil ] ]) 
+		"and: [ self container isTopLevelContainer not "
+		and: [ self container name isNotNil ]
+		"]"
+	) 
 	ifTrue: 
 			[ self container mooseNameOn: aStream.
 			aStream << self mooseNameSeparator ].
@@ -261,7 +263,8 @@ ADAContainerEntity >> numberOfLinesOfCode [
 	<MSEProperty: #numberOfLinesOfCode type: #Number>
 	<derived>
 	<MSEComment: 'The number of lines of code in a method.'>
-	self sourceAnchor ifNil: [ ^ SYNUnavailableMetric ].
+	self flag: 'Should define an UndefinedMetric class instead of using nil'.
+	self sourceAnchor ifNil: [ ^ nil ].
 	^ self lookUpPropertyNamed: #numberOfLinesOfCode computedAs: [ self sourceAnchor lineCount ]
 ]
 
