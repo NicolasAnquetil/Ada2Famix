@@ -46,13 +46,13 @@ LwsFileAnchorsTest >> testPackageAndFunction [
 
 	ent := model findEntityNamed: 'Linked_List'.
 	self assert: ent notNil.
-	self assert: ent sourceAnchor allFiles first start equals: 3.
-	self assert: ent sourceAnchor allFiles first stop equals: 83.
+	self assert: ent sourceAnchor allFiles first startPos equals: 3.
+	self assert: ent sourceAnchor allFiles first endPos equals: 83.
 
 	ent := model findEntityNamed: 'Allocate_New_Node'.
 	self assert: ent notNil.
-	self assert: ent sourceAnchor allFiles first start equals: 28.
-	self assert: ent sourceAnchor allFiles first stop equals: 65
+	self assert: ent sourceAnchor allFiles first startPos equals: 28.
+	self assert: ent sourceAnchor allFiles first endPos equals: 65
 
 ]
 
@@ -67,8 +67,8 @@ end P2;'.
 
 	proc := model findEntityNamed: 'P2'.
 	self assert: proc notNil.
-	self assert: proc sourceAnchor allFiles first start equals: 2.
-	self assert: proc sourceAnchor allFiles first stop equals: 37.
+	self assert: proc sourceAnchor allFiles first startPos equals: 2.
+	self assert: proc sourceAnchor allFiles first endPos equals: 37.
 
 	self assert: (model findEntityNamed: 'PUT') isNil
 	"proc := model entityNamed: 'PUT'.
@@ -83,17 +83,17 @@ LwsFileAnchorsTest >> testTwoTasksDeclAndBody [
 
 	ent := model findEntityNamed: 'First_Task'.
 	self assert: ent notNil.
-	self assert: ent sourceAnchor allFiles first start equals: 23.
-	self assert: ent sourceAnchor allFiles first stop equals: 38.
-	self assert: ent sourceAnchor allFiles second start equals: 43.
-	self assert: ent sourceAnchor allFiles second stop equals: 143.
+	self assert: ent sourceAnchor allFiles first startPos equals: 23.
+	self assert: ent sourceAnchor allFiles first endPos equals: 38.
+	self assert: ent sourceAnchor allFiles second startPos equals: 43.
+	self assert: ent sourceAnchor allFiles second endPos equals: 143.
 
 	ent := model findEntityNamed: 'Second_Task'.
 	self assert: ent notNil.
-	self assert: ent sourceAnchor allFiles first start equals: 149.
-	self assert: ent sourceAnchor allFiles first stop equals: 165.
-	self assert: ent sourceAnchor allFiles second start equals: 170.
-	self assert: ent sourceAnchor allFiles second stop equals: 271.
+	self assert: ent sourceAnchor allFiles first startPos equals: 149.
+	self assert: ent sourceAnchor allFiles first endPos equals: 165.
+	self assert: ent sourceAnchor allFiles second startPos equals: 170.
+	self assert: ent sourceAnchor allFiles second endPos equals: 271.
 
 ]
 
@@ -104,23 +104,23 @@ LwsFileAnchorsTest >> testTypesAndSubTypes [
 
 	ent := model findEntityNamed: 'MESSBOX'.
 	self assert: ent notNil.
-	self assert: ent sourceAnchor allFiles first start equals: 52.
-	self assert: ent sourceAnchor allFiles first stop equals: 103.
+	self assert: ent sourceAnchor allFiles first startPos equals: 52.
+	self assert: ent sourceAnchor allFiles first endPos equals: 103.
 
 	ent := model findEntityNamed: 'T_MESSBOX_ID'.
 	self assert: ent notNil.
-	self assert: ent sourceAnchor allFiles first start equals: 108.
-	self assert: ent sourceAnchor allFiles first stop equals: 139.
+	self assert: ent sourceAnchor allFiles first startPos equals: 108.
+	self assert: ent sourceAnchor allFiles first endPos equals: 139.
 
 	ent := model findEntityNamed: 'T_CODE'.
 	self assert: ent notNil.
-	self assert: ent sourceAnchor allFiles first start equals: 144.
-	self assert: ent sourceAnchor allFiles first stop equals: 186.
+	self assert: ent sourceAnchor allFiles first startPos equals: 144.
+	self assert: ent sourceAnchor allFiles first endPos equals: 186.
 
 	ent := model findEntityNamed: 'T_PLOTS_RANGE'.
 	self assert: ent notNil.
-	self assert: ent sourceAnchor allFiles first start equals: 191.
-	self assert: ent sourceAnchor allFiles first stop equals: 271.
+	self assert: ent sourceAnchor allFiles first startPos equals: 191.
+	self assert: ent sourceAnchor allFiles first endPos equals: 271.
 
 ]
 
