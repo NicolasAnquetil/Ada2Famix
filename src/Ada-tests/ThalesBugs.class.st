@@ -7,7 +7,7 @@ Implemented as selector on the class side
 Class {
 	#name : #ThalesBugs,
 	#superclass : #Object,
-	#category : #'Ada-tests-samples'
+	#category : #'Ada-tests-ThalesSamples'
 }
 
 { #category : #'bugs - other generic instantiation' }

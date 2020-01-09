@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesUtils'
 }
 
 { #category : #running }
@@ -15,8 +15,12 @@ AdaEntitiesTest >> createADAEntity: aClass named: aName [
 
 { #category : #running }
 AdaEntitiesTest >> createAccessFrom: anEntity to: aVariable [
-
-	^ model add: (FAMIXAccess new accessor: anEntity ; variable: aVariable ; yourself) 
+	^ model
+		add:
+			(FAMIXAccess new
+				accessor: anEntity;
+				variable: aVariable;
+				yourself)
 ]
 
 { #category : #running }

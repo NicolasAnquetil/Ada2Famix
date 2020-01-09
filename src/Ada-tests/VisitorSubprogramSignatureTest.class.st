@@ -5,7 +5,7 @@ A LwsSubprogramSignatureTest is xxxxxxxxx.
 Class {
 	#name : #VisitorSubprogramSignatureTest,
 	#superclass : #AbstractUtilityVisitor,
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesUtils'
 }
 
 { #category : #running }

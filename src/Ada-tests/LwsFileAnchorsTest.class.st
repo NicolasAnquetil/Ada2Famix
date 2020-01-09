@@ -1,7 +1,7 @@
 Class {
 	#name : #LwsFileAnchorsTest,
 	#superclass : #LwsAdaParserAbstractTests,
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesDefRef'
 }
 
 { #category : #tests }
@@ -16,12 +16,12 @@ package body FCFC is
 end FCFC;
 '.
 
-	invok := (model allWithType: FAMIXInvocation) first.
+	invok := model allInvocations first.
 	self assert: invok notNil.
 	self assert: invok sourceAnchor notNil.
 	self assert: invok sourceAnchor startPos equals: 88.
 
-	invok := (model allWithType: FAMIXInvocation) second.
+	invok := model allInvocations second.
 	self assert: invok notNil.
 	self assert: invok sourceAnchor notNil.
 	self assert: invok sourceAnchor startPos equals: 93

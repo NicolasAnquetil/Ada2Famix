@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesUtils'
 }
 
 { #category : #tests }

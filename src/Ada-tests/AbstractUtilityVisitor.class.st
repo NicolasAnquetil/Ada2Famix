@@ -5,7 +5,7 @@ Class {
 		'visitor',
 		'rootRule'
 	],
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesUtils'
 }
 
 { #category : #running }

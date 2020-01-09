@@ -1,7 +1,7 @@
 Class {
 	#name : #ADAEntitiesMooseChiefCompatibility,
 	#superclass : #TestCase,
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesUtils'
 }
 
 { #category : #'as yet unclassified' }

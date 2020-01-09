@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'importer'
 	],
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesDefRef'
 }
 
 { #category : #running }

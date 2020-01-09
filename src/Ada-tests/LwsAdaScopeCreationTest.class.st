@@ -5,7 +5,7 @@ A LwsAdaDefTest is xxxxxxxxx.
 Class {
 	#name : #LwsAdaScopeCreationTest,
 	#superclass : #LwsAdaParserAbstractTests,
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesDefRef'
 }
 
 { #category : #tests }

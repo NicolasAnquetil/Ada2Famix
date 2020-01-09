@@ -1,7 +1,7 @@
 Class {
 	#name : #LwsCompleteParsingTest,
 	#superclass : #LwsAdaParserAbstractTests,
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesDefRef'
 }
 
 { #category : #'as yet unclassified' }

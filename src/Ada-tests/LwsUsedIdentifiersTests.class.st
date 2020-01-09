@@ -5,7 +5,7 @@ Class {
 		'model',
 		'visitor'
 	],
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesDefRef'
 }
 
 { #category : #running }

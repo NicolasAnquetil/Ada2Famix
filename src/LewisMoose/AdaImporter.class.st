@@ -1,6 +1,5 @@
 "
 An AdaImporter takes care of creating FamixAda entities from LewisAda entities.
-It is called by the LwsAdaVisitorImporter and could (should?) be integrated with it
 "
 Class {
 	#name : #AdaImporter,

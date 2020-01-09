@@ -1,7 +1,7 @@
 Class {
 	#name : #LwsBugsTest,
 	#superclass : #LwsAdaParserAbstractTests,
-	#category : #'Ada-tests'
+	#category : #'Ada-tests-ThalesDefRef'
 }
 
 { #category : #setUp }
@@ -12,26 +12,16 @@ LwsBugsTest >> resetMeta [
 
 { #category : #tests }
 LwsBugsTest >> testCaseRegression [
-	"
-	Bug reported by Thales (Redmine 408))
-	"
+	"Bug reported by Thales (Redmine 408))"
 
-	| mseFileName aStream importedModel |
+	| importedModel |
 	self parseAndVisit: (ThalesBugs examplesInCategory: 'bugs - proc in proc').
-	self verifyCaseStatementIn: model.
-	"
-	Export then import then check again
-	"
-	mseFileName := 'thales-test.mse'.
-	aStream := StandardFileStream forceNewFileNamed: mseFileName.
-	model exportToMSEStream: aStream.
-	aStream close.
-	aStream := StandardFileStream readOnlyFileNamed: mseFileName.
-	importedModel := ADAModel new importFromMSEStream: aStream.
-	aStream close.
+	self verifyCaseStatementIn: model.	
+		
+	"Export then import then check again"
+	importedModel := ADAModel new importFromMSEStream: model asMSEString readStream.
 	self assert: importedModel size equals: model size.
-	self verifyCaseStatementIn: importedModel.
-	mseFileName asFileReference delete
+	self verifyCaseStatementIn: importedModel
 ]
 
 { #category : #tests }
@@ -180,18 +170,18 @@ LwsBugsTest >> verifyCaseStatementIn: aModel [
 	with two alternatives"
 	case := (aModel allWithType: FASTAdaCaseStatement) anyOne.
 	self assert: case alternatives size equals: 2.
-	alternative := case alternatives first.
-	self assert: alternative statements size equals: 1. 
+	self assert: (case alternatives collect: [ :alt | alt statements size ]) asBag = #(0 1) asBag.
+	alternative := case alternatives detect: [ :alt | alt statements size = 1 ].
+	self assert: alternative statements size equals: 1.
 	self assert: alternative choices notNil.
 	self assert: alternative choices size equals: 1.
 	choice := alternative choices first.
 	self assert: choice class equals: FAMIXAccess.
 	self assert: choice variable name equals: 'ARTIFACT'.
 	self assert: choice accessor name equals: 'cased_procedure'.
-	alternative := case alternatives second.
+	alternative := case alternatives detect: [ :alt | alt statements size = 0 ].
 	self assert: alternative choices notNil.
-	self assert: alternative choices size equals: 0.
-	
+	self assert: alternative choices size equals: 0
 ]
 
 { #category : #verifying }
@@ -216,9 +206,9 @@ LwsBugsTest >> verifySubprogramWithinRenamedIn: aModel [
 	aProcedure := aModel allAdaSubprograms detect: [ :sub | sub name = 'test' ].
 	self assert: aProcedure container name equals: 'renameexemple'.
 	self assert: aProcedure outgoingInvocations size equals: 1.
-	invocation := aProcedure outgoingInvocations any.
+	invocation := aProcedure outgoingInvocations anyOne.
 	self assert: invocation sender == aProcedure.
-	invoked := invocation candidates any.
+	invoked := invocation candidates anyOne.
 	self assert: invoked class == ADASubprogram.
 	self assert: invoked name equals: 'launch'.
 	renamed := invoked container.
@@ -235,7 +225,7 @@ LwsBugsTest >> verifyTypeWithinRenamedIn: aModel [
 	aProcedure := aModel allAdaSubprograms detect: [ :sub | sub name = 'other_test' ].
 	self assert: aProcedure container name equals: 'subrename'.
 	self assert: aProcedure localVariables size equals: 1.
-	local := aProcedure localVariables any.
+	local := aProcedure localVariables anyOne.
 	self assert: local class == ADAStructuralEntity.
 	self assert: local name equals: 'HIS_VAR'.
 	type := local declaredType.

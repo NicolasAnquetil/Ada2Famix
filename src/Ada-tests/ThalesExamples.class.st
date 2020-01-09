@@ -7,7 +7,7 @@ Implemented as selector on the class side
 Class {
 	#name : #ThalesExamples,
 	#superclass : #Object,
-	#category : #'Ada-tests-samples'
+	#category : #'Ada-tests-ThalesSamples'
 }
 
 { #category : #'chef-dependencies' }
