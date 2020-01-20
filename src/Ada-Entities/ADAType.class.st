@@ -99,7 +99,7 @@ ADAType >> hasSuperType [
 
 { #category : #'moosequery-queries-incoming' }
 ADAType >> incomingTypeDeclarations [
-	^ self structuresWithDeclaredType , self subprogramsWithDeclaredType collect: [ :var | MooseChefTypeDeclarationAssociation newFrom: var to: self ]
+	^ self structuresWithDeclaredType , self subprogramsWithDeclaredType collect: [ :var | MooseQueryTypeDeclarationAssociation newFrom: var to: self ]
 ]
 
 { #category : #'initialize-release' }
